@@ -13,8 +13,8 @@ struct ContentView: View {
     
     // friends array
     @State private var friends: [Friend] = [
-        Friend(name:"Nicole", birthday: .now),
-        Friend(name:"Geetika", birthday: .now)
+        Friend(name:"Haseul", birthday: .now),
+        Friend(name:"Yves", birthday: .now)
     ]
     
     var body: some View {
@@ -31,6 +31,17 @@ struct ContentView: View {
                 VStack(alignment:.center, spacing:20) {
                     Text("New Birthday")
                         .font(.headline)
+                    DatePicker(selection: $newBirthday, in: Date.distantPast...Date.now, displayedComponents: .date){
+                        TextField("Name", text: $newName)
+                            .textFieldStyle(.roundedBorder)
+                    }
+                    Button("Save") {
+                        let newFriend = Friend(name: newName, birthday: newBirthday)
+                        friends.append(newFriend)
+                        newName = ""
+                        newBirthday = .now
+                    }
+                    .bold()
                 }
             }
 
