@@ -44,7 +44,8 @@ struct ContentView: View {
                     .bold()
                 }
             }
-
+            .padding()
+            .background(.bar)
         }
     }
     
